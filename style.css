@@ -13,3 +13,16 @@ button {
   border-radius: 4px;
   cursor: pointer;
 }
+.heading-wrap{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 2rem;
+  text-align: center;
+}
+.heading{
+  font-size: 2rem;
+  color: #fff;
+  margin: 1rem;
+}
