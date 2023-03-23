@@ -76,13 +76,23 @@ const update = (data) => {
   //Remove extra nodes from the DOM
   rects.exit().remove();
 
+  //random color generator
+    const generateRandomColor = () => {
+      const maxVal = 0xffffff; // 16777215.
+      let randomNumber = Math.random() * maxVal;
+      randomNumber = Math.floor(randomNumber);
+      randomNumber = randomNumber.toString(16);
+      const randColor = randomNumber.padStart(6, 0);
+      return `#${randColor.toUpperCase()}`;
+    };
+
   // Initial chart scaling and styling for entries
   rects
-    .attr('width', xScale.bandwidth)
-    .attr('height', (d) => chartHeight - yScale(d.temp))
-    .attr('x', (d) => xScale(d.date))
-    .attr('y', (d) => yScale(d.temp))
-    .style('fill', 'orange');
+    .attr("width", xScale.bandwidth)
+    .attr("height", (d) => chartHeight - yScale(d.temp))
+    .attr("x", (d) => xScale(d.date))
+    .attr("y", (d) => yScale(d.temp))
+    .style("fill", generateRandomColor());
 
   // chart scaling and styling for new entries
   rects
@@ -94,7 +104,7 @@ const update = (data) => {
     .transition()
     .duration(1000)
     .attr('height', (d) => chartHeight - yScale(d.temp))
-    .style('fill', 'orange') // Bar color
+    .style('fill', generateRandomColor()) // Bar color
 
   xAxisGroup.call(xAxis);
   yAxisGroup.call(yAxis);
